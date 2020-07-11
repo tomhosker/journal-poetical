@@ -16,8 +16,8 @@ def new_page():
     pages.sort()
     for i in range(1, len(pages)+1):
         expected_filename = str(i)+".md"
-        if pages[i] != expected_filename:
-            raise Exception("Bad filename: "+pages[i])
+        if pages[i-1] != expected_filename:
+            raise Exception("Bad filename: "+pages[i-1])
     new_filename = "pages/"+str(len(pages)+1)+".md"
     pathlib.Path(new_filename).touch()
     os.system("gedit "+new_filename)
